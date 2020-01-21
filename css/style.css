@@ -1,7 +1,8 @@
 /* table */
 
+/* DO NOT CHANGE START */
 .board{
-    background-color: $table-background-color;
+    background-color: #212529;
 }
 
 table{
@@ -14,39 +15,114 @@ tbody{
 }
 
 td{
-    border: 1px solid $table-td-border-color;
+    border: 1px solid transparent;
     padding-top: 3%;
     z-index: 100;
 }
 
 .animate-table-cell{
-    animation: cyclePeachColor 0.5s forwards linear;
+    animation: cycleColor 0.5s forwards linear;
     pointer-events: none;
+}
+
+/* DO NOT CHANGE END */
+
+/* TBD */
+
+@keyframes cycleColor{
+    0% { 
+        background-color: #212529;
+        border-radius: 1%;
+    }
+
+    50% { 
+        background-color: rgb(0, 255, 0);
+        border-radius: 50%;
+    }
+
+    100% { 
+        background-color: #212529;
+        border-radius: 1%;
+    }
 }
 
 @keyframes cyclePeachColor{
     0% { 
-        background-color: $bg-yellow-background-color;
+        background-color: rgb(255,255,0);
         border-radius: 50%;
     }
     20% { 
-        background-color: $bg-orange-background-color;
+        background-color: rgb(255, 128, 0);
         border-radius: 40%;
     }
     40% { 
-        background-color: $bg-magenta-background-color;
+        background-color: rgb(255,0,128);
         border-radius: 30%;
     }
     60% { 
-        background-color: $bg-pink-background-color;
+        background-color: rgb(255,0,255);
         border-radius: 20%;
     }
     80% { 
-        background-color: $bg-purple-background-color;
+        background-color: rgb(128,0,255);
         border-radius: 10%;
     }
     100% { 
-        background-color: $table-td-border-color;
+        background-color: rgb(0,0,255);
+        border-radius: 1%;
+    }
+}
+
+@keyframes cycleTropicColor{
+    0% { 
+        background-color: rgb(255,0,0);
+        border-radius: 50%;
+    }
+    20% { 
+        background-color: rgb(255,64,0);
+        border-radius: 40%;
+    }
+    40% { 
+        background-color: rgb(255,191,0);
+        border-radius: 30%;
+    }
+    60% { 
+        background-color: rgb(255,255,0);
+        border-radius: 20%;
+    }
+    80% { 
+        background-color: rgb(0,255,0);
+        border-radius: 10%;
+    }
+    100% { 
+        background-color: rgb(1, 128, 1);
+        border-radius: 1%;
+    }
+}
+
+@keyframes cycleOceanColor{
+    0% { 
+        background-color: rgb(255,255,0);
+        border-radius: 50%;
+    }
+    20% { 
+        background-color: rgb(0, 255, 0);
+        border-radius: 40%;
+    }
+    40% { 
+        background-color: rgb(0, 255, 64);
+        border-radius: 30%;
+    }
+    60% { 
+        background-color: rgb(0, 255, 200);
+        border-radius: 20%;
+    }
+    80% { 
+        background-color: rgb(0, 200, 255);
+        border-radius: 10%;
+    }
+    100% { 
+        background-color: rgb(0,0,255);
         border-radius: 1%;
     }
 }

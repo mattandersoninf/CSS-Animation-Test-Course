@@ -1,0 +1,21 @@
+/* style.css */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+body{
+    text-align: center;
+    background-image: url("images/space-background.jpg");
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+h1{
+    height: 35vh;
+    width: 100%;
+    padding-top: 20vh;
+    color: white;
+}
+h2{
+    height: 50vh;
+    width: 100%;
+    color: white;
+}

@@ -4,9 +4,10 @@
 
 body{
     text-align: center;
-    background-image: url("images/space-background.jpg");
+    background-image: url("images/paint-powder-background.jpg");
     font-family: 'Roboto', sans-serif;
     margin: 0;
+    background-repeat: no-repeat;
 }
 h1{
     height: 35vh;

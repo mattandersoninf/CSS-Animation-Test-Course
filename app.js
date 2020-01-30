@@ -9,9 +9,9 @@ var animatedTable = document.querySelector("table.board");
  *  on the animated to demonstrate the pulse effect. 
  * ***********************************************************/
 function onLoad(){
-  pulseSpanColor(5,8);
-  pulseSpanColor(5,16);
-  pulseSpanColor(5,24);
+  pulseSpanColor(5,8,32);
+  pulseSpanColor(5,16,32);
+  pulseSpanColor(5,24,32);
 }
 
 /*************************************************************
@@ -24,11 +24,42 @@ animatedTable.addEventListener("click", function(){
     
     if (event.target.tagName == "TD" ){
         
-        pulseSpanColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 32);
+        /*
+        // Pulse Press Sample
+        pulsePressColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 5);
+        
+        */
+        
+        /*
+        // Pulse Press 2 Sample
+        pulsePress2Color(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 5);
+        
+        */
 
         /*
-        pulsePressColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 5);
+        // Pulse Span Sample
+        pulseSpanColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 32);
+
         */
+        
+        /*
+        // Pulse Small Arrow Sample
+        pulseSmallArrowColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 32);
+        
+        */
+
+        /*
+        // Pulse Medium Arrow Sample
+        pulseLargeArrowColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 32, 2);
+        
+        */
+
+        //Pulse Large Arrow Sample
+        pulseLargeArrowColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 32, 5);
+        
+
+
+
     }
 
 });
@@ -38,7 +69,9 @@ animatedTable.addEventListener("click", function(){
  *  Given an x coordinate, y coordinate, and pulseDepth, add  
  *  animate-table-cell to the table cell at those coordinates,
  *  remove the animation class after 500ms, and call the pulse
- *  function with a decremented pulse depth.
+ *  function with a decremented pulse depth. The nested function
+ *  targets the table cells that are adjacent and adds the css
+ *  animation to those cells.
  * ***********************************************************/
 function pulsePressColor(rowNum, colNum, pulseDepth){
     
@@ -62,6 +95,15 @@ function pulsePressColor(rowNum, colNum, pulseDepth){
   
 }
 
+/*************************************************************
+ *  PULSE PRESS 2 FUNCTION
+ *  Given an x coordinate, y coordinate, and pulseDepth, add  
+ *  animate-table-cell to the table cell at those coordinates,
+ *  remove the animation class after 500ms, and call the pulse
+ *  function with a decremented pulse depth. The nested function
+ *  targets the table cells that are adjacent by two spaces and 
+ *  adds the css animation to those cells.
+ * ***********************************************************/
 function pulsePress2Color(rowNum, colNum, pulseDepth){
     
     if(pulseDepth > -1 && verifyCoordinates(rowNum, colNum) && (!(document.getElementById(rowNum+"-"+colNum).classList.contains("animate-table-cell")))){
@@ -100,6 +142,46 @@ function pulseSpanColor(rowNum, colNum, pulseDepth){
           pulseSpanColor(parseInt(rowNum,10),parseInt(colNum,10)+1, pulseDepth-1);
           pulseSpanColor(parseInt(rowNum,10)-1,parseInt(colNum,10), pulseDepth-1);
           pulseSpanColor(parseInt(rowNum,10),parseInt(colNum,10)-1, pulseDepth-1); 
+      },200); 
+    
+    }
+  
+}
+
+function pulseSmallArrowColor(rowNum, colNum, pulseDepth){
+    
+    if(pulseDepth > -1 && verifyCoordinates(rowNum, colNum) && (!(document.getElementById(rowNum+"-"+colNum).classList.contains("animate-table-cell")))){
+          
+      document.getElementById(rowNum+"-"+colNum).classList.add("animate-table-cell");
+  
+      window.setTimeout(function() {
+          document.getElementById(rowNum+"-"+colNum).classList.remove('animate-table-cell');
+  
+      },500);
+  
+      window.setTimeout(function() {
+          pulseSmallArrowColor(parseInt(rowNum,10),parseInt(colNum,10)+1, pulseDepth-1);
+      },200); 
+    
+    }
+  
+}
+
+function pulseLargeArrowColor(rowNum, colNum, horizPulseDepth, vertPulseDepth){
+    
+    if(horizPulseDepth > -1 && vertPulseDepth > -1 && verifyCoordinates(rowNum, colNum) && (!(document.getElementById(rowNum+"-"+colNum).classList.contains("animate-table-cell")))){
+          
+      document.getElementById(rowNum+"-"+colNum).classList.add("animate-table-cell");
+  
+      window.setTimeout(function() {
+          document.getElementById(rowNum+"-"+colNum).classList.remove('animate-table-cell');
+  
+      },500);
+  
+      window.setTimeout(function() {
+          pulseLargeArrowColor(parseInt(rowNum,10)+1,parseInt(colNum,10), horizPulseDepth, vertPulseDepth-1);
+          pulseLargeArrowColor(parseInt(rowNum,10),parseInt(colNum,10)+1, horizPulseDepth-1, vertPulseDepth);
+          pulseLargeArrowColor(parseInt(rowNum,10)-1,parseInt(colNum,10), horizPulseDepth, vertPulseDepth-1); 
       },200); 
     
     }

@@ -9,12 +9,9 @@ var animatedTable = document.querySelector("table.board");
  *  on the animated to demonstrate the pulse effect. 
  * ***********************************************************/
 function onLoad(){
-  var rand1 = [Math.floor(Math.random()*24), Math.floor(Math.random()*32)];
-  var rand2 = [Math.floor(Math.random()*24), Math.floor(Math.random()*32)];
-  var rand3 = [Math.floor(Math.random()*24), Math.floor(Math.random()*32)];
-  pulsePressColor(rand1[0],rand1[1],Math.floor(Math.random()*4)+1);
-  pulsePressColor(rand2[0],rand2[1],Math.floor(Math.random()*4)+1);
-  pulsePressColor(rand3[0],rand3[1],Math.floor(Math.random()*4)+1);
+  pulsePressColor(5,8,5);
+  pulsePressColor(5,16,5);
+  pulsePressColor(5,24,5);
 }
 
 /*************************************************************
@@ -27,7 +24,7 @@ animatedTable.addEventListener("click", function(){
     
     if (event.target.tagName == "TD" ){
         
-        pulsePress2Color(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), Math.floor(Math.random()*4)+1);
+        pulsePressColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 5);
     
     }
 

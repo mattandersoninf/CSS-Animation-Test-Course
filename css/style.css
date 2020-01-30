@@ -50,22 +50,22 @@ td{
     0% { 
         background-color: rgb(255,255,0);
         border-radius: 50%;
-        transform: scale(1.0);
+        transform: scale(0.2);
     }
     20% { 
         background-color: rgb(255, 128, 0);
         border-radius: 40%;
-        transform: scale(1.5);
+        transform: scale(0.4);
     }
     40% { 
         background-color: rgb(255,0,128);
         border-radius: 30%;
-        transform: scale(2);
+        transform: scale(0.6);
     }
     60% { 
         background-color: rgb(255,0,255);
         border-radius: 20%;
-        transform: scale(1.5);
+        transform: scale(0.8);
     }
     80% { 
         background-color: rgb(128,0,255);
@@ -82,22 +82,27 @@ td{
     0% { 
         background-color: rgb(255,0,0);
         border-radius: 50%;
+        transform: scale(0.2);
     }
     20% { 
         background-color: rgb(255,64,0);
         border-radius: 40%;
+        transform: scale(0.4);
     }
     40% { 
         background-color: rgb(255,191,0);
         border-radius: 30%;
+        transform: scale(0.6);
     }
     60% { 
         background-color: rgb(255,255,0);
         border-radius: 20%;
+        transform: scale(0.8);
     }
     80% { 
         background-color: rgb(0,255,0);
         border-radius: 10%;
+        transform: scale(1);
     }
     100% { 
         background-color: rgb(1, 128, 1);

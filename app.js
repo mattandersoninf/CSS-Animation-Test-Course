@@ -9,9 +9,9 @@ var animatedTable = document.querySelector("table.board");
  *  on the animated to demonstrate the pulse effect. 
  * ***********************************************************/
 function onLoad(){
-  pulsePressColor(5,8,5);
-  pulsePressColor(5,16,5);
-  pulsePressColor(5,24,5);
+  pulseSpanColor(5,8);
+  pulseSpanColor(5,16);
+  pulseSpanColor(5,24);
 }
 
 /*************************************************************
@@ -24,8 +24,11 @@ animatedTable.addEventListener("click", function(){
     
     if (event.target.tagName == "TD" ){
         
+        pulseSpanColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 32);
+
+        /*
         pulsePressColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 5);
-    
+        */
     }
 
 });
@@ -71,10 +74,32 @@ function pulsePress2Color(rowNum, colNum, pulseDepth){
       },500);
   
       window.setTimeout(function() {
-          pulsePressColor(parseInt(rowNum,10)+2,parseInt(colNum,10),pulseDepth-1);
-          pulsePressColor(parseInt(rowNum,10),parseInt(colNum,10)+2,pulseDepth-1);
-          pulsePressColor(parseInt(rowNum,10)-2,parseInt(colNum,10),pulseDepth-1);
-          pulsePressColor(parseInt(rowNum,10),parseInt(colNum,10)-2,pulseDepth-1); 
+          pulsePress2Color(parseInt(rowNum,10)+2,parseInt(colNum,10),pulseDepth-1);
+          pulsePress2Color(parseInt(rowNum,10),parseInt(colNum,10)+2,pulseDepth-1);
+          pulsePress2Color(parseInt(rowNum,10)-2,parseInt(colNum,10),pulseDepth-1);
+          pulsePress2Color(parseInt(rowNum,10),parseInt(colNum,10)-2,pulseDepth-1); 
+      },200); 
+    
+    }
+  
+}
+
+function pulseSpanColor(rowNum, colNum, pulseDepth){
+    
+    if(pulseDepth > -1 && verifyCoordinates(rowNum, colNum) && (!(document.getElementById(rowNum+"-"+colNum).classList.contains("animate-table-cell")))){
+          
+      document.getElementById(rowNum+"-"+colNum).classList.add("animate-table-cell");
+  
+      window.setTimeout(function() {
+          document.getElementById(rowNum+"-"+colNum).classList.remove('animate-table-cell');
+  
+      },500);
+  
+      window.setTimeout(function() {
+          pulseSpanColor(parseInt(rowNum,10)+1,parseInt(colNum,10), pulseDepth-1);
+          pulseSpanColor(parseInt(rowNum,10),parseInt(colNum,10)+1, pulseDepth-1);
+          pulseSpanColor(parseInt(rowNum,10)-1,parseInt(colNum,10), pulseDepth-1);
+          pulseSpanColor(parseInt(rowNum,10),parseInt(colNum,10)-1, pulseDepth-1); 
       },200); 
     
     }

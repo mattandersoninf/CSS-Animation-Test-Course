@@ -126,6 +126,13 @@ function pulsePress2Color(rowNum, colNum, pulseDepth){
   
 }
 
+/*************************************************************
+ *  PULSE PEACH FUNCTION
+ *  Given an x coordinate, y coordinate, and pulseDepth, add  
+ *  animate-table-cell to the table cell at those coordinates,
+ *  remove the animation class after 500ms, and call the pulse
+ *  function with a decremented pulse depth.
+ * ***********************************************************/
 function pulseSpanColor(rowNum, colNum, pulseDepth){
     
     if(pulseDepth > -1 && verifyCoordinates(rowNum, colNum) && (!(document.getElementById(rowNum+"-"+colNum).classList.contains("animate-table-cell")))){
@@ -148,6 +155,13 @@ function pulseSpanColor(rowNum, colNum, pulseDepth){
   
 }
 
+/*************************************************************
+ *  PULSE PEACH FUNCTION
+ *  Given an x coordinate, y coordinate, and pulseDepth, add  
+ *  animate-table-cell to the table cell at those coordinates,
+ *  remove the animation class after 500ms, and call the pulse
+ *  function with a decremented pulse depth.
+ * ***********************************************************/
 function pulseSmallArrowColor(rowNum, colNum, pulseDepth){
     
     if(pulseDepth > -1 && verifyCoordinates(rowNum, colNum) && (!(document.getElementById(rowNum+"-"+colNum).classList.contains("animate-table-cell")))){
@@ -167,6 +181,13 @@ function pulseSmallArrowColor(rowNum, colNum, pulseDepth){
   
 }
 
+/*************************************************************
+ *  PULSE PEACH FUNCTION
+ *  Given an x coordinate, y coordinate, and pulseDepth, add  
+ *  animate-table-cell to the table cell at those coordinates,
+ *  remove the animation class after 500ms, and call the pulse
+ *  function with a decremented pulse depth.
+ * ***********************************************************/
 function pulseLargeArrowColor(rowNum, colNum, horizPulseDepth, vertPulseDepth){
     
     if(horizPulseDepth > -1 && vertPulseDepth > -1 && verifyCoordinates(rowNum, colNum) && (!(document.getElementById(rowNum+"-"+colNum).classList.contains("animate-table-cell")))){

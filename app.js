@@ -127,11 +127,15 @@ function pulsePress2Color(rowNum, colNum, pulseDepth){
 }
 
 /*************************************************************
- *  PULSE PEACH FUNCTION
+ *  PULSE SPAN FUNCTION
  *  Given an x coordinate, y coordinate, and pulseDepth, add  
  *  animate-table-cell to the table cell at those coordinates,
  *  remove the animation class after 500ms, and call the pulse
- *  function with a decremented pulse depth.
+ *  function with a decremented pulse depth. The reason there
+ *  is pulseDpeth is for when someone clicks the board multiple
+ *  in multiple places which cause the pulse effect to bounce
+ *  around. In feeding the pulse depth the limit of screen width,
+ *  it prevents the effect from infinitely looping.
  * ***********************************************************/
 function pulseSpanColor(rowNum, colNum, pulseDepth){
     
@@ -156,13 +160,13 @@ function pulseSpanColor(rowNum, colNum, pulseDepth){
 }
 
 /*************************************************************
- *  PULSE PEACH FUNCTION
+ *  PULSE SMALL ARROW FUNCTION
  *  Given an x coordinate, y coordinate, and pulseDepth, add  
  *  animate-table-cell to the table cell at those coordinates,
  *  remove the animation class after 500ms, and call the pulse
- *  function with a decremented pulse depth.
+ *  function with a decremented pulse depth. 
  * ***********************************************************/
-function pulseSmallArrowColor(rowNum, colNum, pulseDepth){
+function pulseRowColor(rowNum, colNum, pulseDepth){
     
     if(pulseDepth > -1 && verifyCoordinates(rowNum, colNum) && (!(document.getElementById(rowNum+"-"+colNum).classList.contains("animate-table-cell")))){
           
@@ -174,13 +178,13 @@ function pulseSmallArrowColor(rowNum, colNum, pulseDepth){
       },500);
   
       window.setTimeout(function() {
-          pulseSmallArrowColor(parseInt(rowNum,10),parseInt(colNum,10)+1, pulseDepth-1);
+          pulseRowColor(parseInt(rowNum,10),parseInt(colNum,10)+1, pulseDepth-1);
       },200); 
     
     }
   
 }
-
+ 
 /*************************************************************
  *  PULSE PEACH FUNCTION
  *  Given an x coordinate, y coordinate, and pulseDepth, add  

@@ -44,20 +44,18 @@ animatedTable.addEventListener("click", function(){
         
         /*
         // Pulse Small Arrow Sample
-        pulseSmallArrowColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 32);
+        pulseArrowColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 32);
         
         */
 
         /*
         // Pulse Medium Arrow Sample
-        pulseLargeArrowColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 32, 2);
+        pulseArrowColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 32, 2);
         
         */
 
         //Pulse Large Arrow Sample
-        pulseLargeArrowColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 32, 5);
-        
-
+        pulseArrowColor(event.target.id.substring(0, event.target.id.indexOf("-")), event.target.id.substring(event.target.id.indexOf("-")+1, event.target.id.length), 32, 5);
 
 
     }
@@ -160,11 +158,13 @@ function pulseSpanColor(rowNum, colNum, pulseDepth){
 }
 
 /*************************************************************
- *  PULSE SMALL ARROW FUNCTION
+ *  PULSE ROW FUNCTION
  *  Given an x coordinate, y coordinate, and pulseDepth, add  
  *  animate-table-cell to the table cell at those coordinates,
  *  remove the animation class after 500ms, and call the pulse
- *  function with a decremented pulse depth. 
+ *  function with a decremented pulse depth. Send the
+ *  animation to all of the cells to the right of the cell that
+ *  was clicked.
  * ***********************************************************/
 function pulseRowColor(rowNum, colNum, pulseDepth){
     
@@ -186,13 +186,17 @@ function pulseRowColor(rowNum, colNum, pulseDepth){
 }
  
 /*************************************************************
- *  PULSE PEACH FUNCTION
- *  Given an x coordinate, y coordinate, and pulseDepth, add  
- *  animate-table-cell to the table cell at those coordinates,
- *  remove the animation class after 500ms, and call the pulse
- *  function with a decremented pulse depth.
+ *  PULSE ARROW FUNCTION
+ *  Given an x coordinate, y coordinate, a horizontal pulse
+ *  depth, and a vertical pulse depth, add the animation class
+ *  to the table cell that was clicked and then call the function
+ *  on the cell above the cell that was clicked, the cell below,
+ *  and the cell to the right. The cells to the top and bottom
+ *  are decremented for the veritcal pulse depth. The horizontal
+ *  pulse depth is decremented as the animation class is added 
+ *  to cells to the right.
  * ***********************************************************/
-function pulseLargeArrowColor(rowNum, colNum, horizPulseDepth, vertPulseDepth){
+function pulseArrowColor(rowNum, colNum, horizPulseDepth, vertPulseDepth){
     
     if(horizPulseDepth > -1 && vertPulseDepth > -1 && verifyCoordinates(rowNum, colNum) && (!(document.getElementById(rowNum+"-"+colNum).classList.contains("animate-table-cell")))){
           
@@ -204,9 +208,9 @@ function pulseLargeArrowColor(rowNum, colNum, horizPulseDepth, vertPulseDepth){
       },500);
   
       window.setTimeout(function() {
-          pulseLargeArrowColor(parseInt(rowNum,10)+1,parseInt(colNum,10), horizPulseDepth, vertPulseDepth-1);
-          pulseLargeArrowColor(parseInt(rowNum,10),parseInt(colNum,10)+1, horizPulseDepth-1, vertPulseDepth);
-          pulseLargeArrowColor(parseInt(rowNum,10)-1,parseInt(colNum,10), horizPulseDepth, vertPulseDepth-1); 
+          pulseArrowColor(parseInt(rowNum,10)+1,parseInt(colNum,10), horizPulseDepth, vertPulseDepth-1);
+          pulseArrowColor(parseInt(rowNum,10),parseInt(colNum,10)+1, horizPulseDepth-1, vertPulseDepth);
+          pulseArrowColor(parseInt(rowNum,10)-1,parseInt(colNum,10), horizPulseDepth, vertPulseDepth-1); 
       },200); 
     
     }
